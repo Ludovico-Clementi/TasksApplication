@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "TasksApplication.WinUiApp (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "TasksApplication.WinUiApp (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
