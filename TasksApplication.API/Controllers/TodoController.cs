@@ -37,19 +37,26 @@ public class TodoController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteTask(int id)
     {
-        var todo = new Todo { Id = id };
-        _db.Todos.Attach(todo);
+        var todo = await _db.Todos.FindAsync(id);
+        if (todo == null) return NotFound();
+
         _db.Todos.Remove(todo);
         await _db.SaveChangesAsync();
-
         return Ok();
     }
+
 
     [HttpPut("{id}/complete")]
     public async Task<ActionResult<Todo>> MarkCompleted(int id)
     {
-        _db.Todos.Where(t => t.Id == id)
-                 .ExecuteUpdate(t => t.SetProperty(t => t.Completed, true));
-        return Ok();
+        var todo = await _db.Todos.FindAsync(id);
+        if (todo == null) return NotFound();
+
+        todo.Completed = true;
+        await _db.SaveChangesAsync();
+
+        return Ok(todo);
     }
+
+
 }
