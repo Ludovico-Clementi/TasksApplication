@@ -1,37 +1,35 @@
-using TasksApplication.WinUiAPP.Services;
-using TasksApplication.WinUiAPP.ViewModels;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Navigation;
+using TasksApplication.Core.Services;
+using TasksApplication.Core.ViewModels;
+using TasksApplication.WinUIApp.Services;
 
-namespace TasksApplication.WinUiAPP.Views
+namespace TasksApplication.WinUIApp.Views;
+
+public sealed partial class MenuPage : Page
 {
-    public sealed partial class MenuPage : Page
+    public MenuPage()
     {
-        private readonly NavigationService _navigationService;
+        this.InitializeComponent();
 
-        public MenuPage()
-        {
-            this.InitializeComponent();
-            greetingDisplay.Text = $"Hello, {SessionService.CurrentUser.Name}!";
-        }
+        // Crea i servizi WinUI
+        var navService = new WinUINavigationService(this.Frame);
+        var dialogService = new WinUIDialogService(this.XamlRoot);
 
-        //protected override void OnNavigatedTo(NavigationEventArgs e)
-        //{
-        //    base.OnNavigatedTo(e);
+        // Inietta ViewModel
+        this.DataContext = new MenuViewModel(navService, dialogService);
 
-        //    // Recupera il NavigationService passato come parametro
-        //    var navigationService = e.Parameter as NavigationService;
+        // Aggiorna greeting
+        greetingDisplay.Text = $"Hello, {SessionService.CurrentUser.Name}!";
+    }
 
-        //    // Imposta il DataContext con il ViewModel, includendo NavigationService
-        //    this.DataContext = new MenuViewModel(navigationService);
-        //}
+    private void ExitButton_Click(object sender, RoutedEventArgs e)
+    {
+        Application.Current.Exit();
+    }
 
-        private void ExitButton_Click(object sender, RoutedEventArgs e) => Application.Current.Exit();
-
-        private void TodoListButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(TodoListPage));
-        }
+    private void TodoListButton_Click(object sender, RoutedEventArgs e)
+    {
+        this.Frame.Navigate(typeof(TodoListPage));
     }
 }

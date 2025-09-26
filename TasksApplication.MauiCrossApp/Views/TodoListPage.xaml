@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TasksApplication.MauiCrossApp.Views.TodoListPage"
+             Title="Todo List">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="12">
+
+            <!-- Header -->
+            <HorizontalStackLayout HorizontalOptions="EndAndExpand" Spacing="8">
+                <Button Text="Menu"
+                        Command="{Binding NavigateToMenuCommand}"/>
+                <Label Text="Task List"
+                       FontSize="16"
+                       TextColor="Red"/>
+            </HorizontalStackLayout>
+
+            <!-- Input Titolo -->
+            <HorizontalStackLayout Spacing="8">
+                <Label Text="Titolo:" FontSize="16"/>
+                <Entry Placeholder="Inserisci titolo"
+                       Text="{Binding Title, Mode=TwoWay}"/>
+            </HorizontalStackLayout>
+
+            <!-- Input Descrizione -->
+            <HorizontalStackLayout Spacing="8">
+                <Label Text="Descrizione:" FontSize="16"/>
+                <Entry Placeholder="Inserisci descrizione"
+                       Text="{Binding Description, Mode=TwoWay}"/>
+            </HorizontalStackLayout>
+
+            <!-- DatePickers -->
+            <HorizontalStackLayout Spacing="8">
+                <Label Text="Inizio:" FontSize="16"/>
+                <DatePicker Date="{Binding StartDate, Mode=TwoWay}"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="8">
+                <Label Text="Scadenza:" FontSize="16"/>
+                <DatePicker Date="{Binding DueDate, Mode=TwoWay}"/>
+            </HorizontalStackLayout>
+
+            <!-- Comandi -->
+            <VerticalStackLayout Spacing="8">
+                <Button Text="Inserisci" Command="{Binding AddNewTodoCommand}"/>
+                <Button Text="Elimina" Command="{Binding DeleteTodoCommand}"/>
+            </VerticalStackLayout>
+
+            <!-- Lista Todo -->
+            <CollectionView ItemsSource="{Binding Todos}"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding SelectedTodo, Mode=TwoWay}"
+                            HeightRequest="400">
+                <CollectionView.Header>
+                    <Label Text="My Todo List"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           Margin="10"/>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <HorizontalStackLayout Spacing="8">
+                            <Label Text="{Binding Title}"/>
+                            <Label Text=" - "/>
+                            <Label Text="{Binding StartDate}"/>
+                            <Label Text="{Binding DueDate}"/>
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

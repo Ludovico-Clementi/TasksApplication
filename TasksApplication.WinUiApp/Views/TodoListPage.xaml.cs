@@ -1,29 +1,28 @@
-using TasksApplication.WinUiAPP.ViewModels;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Navigation;
-using TasksApplication.WinUiAPP.Services;
+using TasksApplication.Core.Services;
+using TasksApplication.Core.ViewModels;
+using TasksApplication.WinUIApp.Services;
 
-namespace TasksApplication.WinUiAPP.Views;
+namespace TasksApplication.WinUIApp.Views;
 
-/// <summary>
-/// An empty page that can be used on its own or navigated to within a Frame.
-/// </summary>
 public sealed partial class TodoListPage : Page
 {
     public TodoListPage()
     {
         this.InitializeComponent();
+
+        this.Loaded += TodoListPage_Loaded;
     }
 
-    protected override void OnNavigatedTo(NavigationEventArgs e)
+    private void TodoListPage_Loaded(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        base.OnNavigatedTo(e);
+        this.Loaded -= TodoListPage_Loaded;
 
-        // Recupera il NavigationService passato come parametro
-        var navigationService = e.Parameter as NavigationService;
+        // Ora XamlRoot è valido 
+        var dialogService = new WinUIDialogService(this.XamlRoot);
+        var navService = new WinUINavigationService(this.Frame);
 
-        // Imposta il DataContext con il ViewModel, includendo NavigationService
-        this.DataContext = new TodoListViewModel(navigationService);
+        this.DataContext = new TodoListViewModel(dialogService,navService);
     }
 
     private void MenuButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)

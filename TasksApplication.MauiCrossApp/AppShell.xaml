@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:TasksApplication.MauiCrossApp.Views"
+       x:Class="TasksApplication.MauiCrossApp.AppShell">
+
+    <!-- Rotte per la navigazione -->
+    <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate views:LoginPage}" />
+    <ShellContent Route="MenuPage" ContentTemplate="{DataTemplate views:MenuPage}" />
+    <ShellContent Route="TodoListPage" ContentTemplate="{DataTemplate views:TodoListPage}" />
+
+</Shell>

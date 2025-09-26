@@ -1,28 +1,21 @@
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
-using TasksApplication.WinUiAPP.ViewModels;
-using TasksApplication.WinUiAPP.Services;
+using TasksApplication.Core.ViewModels;
 
-namespace TasksApplication.WinUiAPP.Views;
+namespace TasksApplication.WinUIApp.Views;
 
 public sealed partial class LoginPage : Page
 {
     public LoginPage()
     {
-        this.InitializeComponent();
+        InitializeComponent();
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
     {
         base.OnNavigatedTo(e);
 
-        // Recupera il NavigationService passato come parametro
-        var navigationService = e.Parameter as NavigationService;
-
-        // Imposta il DataContext con il ViewModel, includendo NavigationService
-        this.DataContext = new LoginViewModel(navigationService);
+        if (e.Parameter is LoginViewModel vm)
+            DataContext = vm;
     }
-
-
-    
 }

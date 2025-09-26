@@ -12,6 +12,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TasksApplication.DataModels
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TasksApplication.WinUiApp", "TasksApplication.WinUiApp\TasksApplication.WinUiApp.csproj", "{D9312A5C-D8D5-4610-B38F-AE620B8440FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TasksApplication.Core", "TasksApplication.Core\TasksApplication.Core.csproj", "{EEFDE32D-F449-4D4E-8AF4-E4D7240553C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TasksApplication.MauiCrossApp", "TasksApplication.MauiCrossApp\TasksApplication.MauiCrossApp.csproj", "{AB702811-0EED-4EF1-AC43-8D90F21DF10C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TasksApplication.APIControllerTesting", "TasksApplication.APIControllerTesting\TasksApplication.APIControllerTesting.csproj", "{F9A69957-606E-447B-9E81-7AE7C21C3028}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +38,18 @@ Global
 		{D9312A5C-D8D5-4610-B38F-AE620B8440FF}.Release|Any CPU.ActiveCfg = Release|x64
 		{D9312A5C-D8D5-4610-B38F-AE620B8440FF}.Release|Any CPU.Build.0 = Release|x64
 		{D9312A5C-D8D5-4610-B38F-AE620B8440FF}.Release|Any CPU.Deploy.0 = Release|x64
+		{EEFDE32D-F449-4D4E-8AF4-E4D7240553C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEFDE32D-F449-4D4E-8AF4-E4D7240553C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEFDE32D-F449-4D4E-8AF4-E4D7240553C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEFDE32D-F449-4D4E-8AF4-E4D7240553C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB702811-0EED-4EF1-AC43-8D90F21DF10C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB702811-0EED-4EF1-AC43-8D90F21DF10C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB702811-0EED-4EF1-AC43-8D90F21DF10C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB702811-0EED-4EF1-AC43-8D90F21DF10C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9A69957-606E-447B-9E81-7AE7C21C3028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9A69957-606E-447B-9E81-7AE7C21C3028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9A69957-606E-447B-9E81-7AE7C21C3028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9A69957-606E-447B-9E81-7AE7C21C3028}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

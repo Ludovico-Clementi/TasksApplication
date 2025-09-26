@@ -15,11 +15,11 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using TasksApplication.WinUiAPP.Views;
+using TasksApplication.WinUIApp.Views;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace TasksApplication.WinUiApp
+namespace TasksApplication.WinUIApp
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.

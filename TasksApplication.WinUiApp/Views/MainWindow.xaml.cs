@@ -1,32 +1,36 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using TasksApplication.WinUiAPP.Services;
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
+using TasksApplication.Core.ViewModels;
+using TasksApplication.WinUIApp.Services;
 
-namespace TasksApplication.WinUiAPP.Views;
+namespace TasksApplication.WinUIApp.Views;
 
-/// <summary>
-/// An empty window that can be used on its own or navigated to within a Frame.
-/// </summary>
 public sealed partial class MainWindow : Window
 {
-    public NavigationService NavigationService { get; }
+    public WinUINavigationService NavigationService { get; }
+    public WinUIDialogService DialogService { get; private set; }
 
     public MainWindow()
     {
         InitializeComponent();
+        NavigationService = new WinUINavigationService(MainFrame);
 
-        NavigationService = new NavigationService(MainFrame);
-        MainFrame.Navigate(typeof(LoginPage), NavigationService);
-
-
-        var rootElement = this.Content as FrameworkElement;
-        if (rootElement != null)
-            rootElement.Loaded += Root_Loaded;
+        if (this.Content is FrameworkElement root)
+        {
+            root.Loaded += Root_Loaded;
+        }
     }
+
     private void Root_Loaded(object sender, RoutedEventArgs e)
     {
-        DialogService.XamlRoot = this.Content.XamlRoot;
+        if (sender is FrameworkElement root && root.XamlRoot != null)
+        {
+            ((FrameworkElement)sender).Loaded -= Root_Loaded;
+
+            DialogService = new WinUIDialogService(root.XamlRoot);
+            var loginViewModel = new LoginViewModel(NavigationService, DialogService);
+            MainFrame.Navigate(typeof(LoginPage), loginViewModel);
+        }
     }
+
 }

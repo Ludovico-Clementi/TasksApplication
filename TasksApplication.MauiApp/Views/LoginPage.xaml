@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TasksApplication.MauiApps.Views.LoginPage"
+             Title="LoginPage">
+    <Grid x:Name="MainGrid" Padding="20" Background="Transparent">
+
+        <VerticalStackLayout Spacing="12">
+
+            <Entry Text="Nome utente" Placeholder="Inserisci nome"
+                  ReturnCommand="{Binding NomeUtente, Mode=TwoWay}" Width="250"/>
+
+            <Entry Text="Password" Placeholder="Inserisci password"
+                  ReturnCommand="{Binding PasswordUtente, Mode=TwoWay}" Width="250"/>
+
+            <HorizontalStackLayout Spacing="12">
+                <Button Text="Register" Command="{Binding RegisterCommand}" Width="100"/>
+                <Button Text="Login" Command="{Binding LoginCommand}" Width="100"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+    </Grid>
+</ContentPage>
